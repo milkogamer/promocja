@@ -1,121 +1,134 @@
 body {
     background-image: url('energylandia2.jpg');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     color: white;
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 header {
     font-size: 2.5rem;
     text-align: center;
     color: white;
-    margin-bottom: -50px;
+    margin: 30px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 main {
+    width: 100%;
+    max-width: 600px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
 }
 
 form {
-    background-color: rgba(173, 216, 230, 0.9);
-    padding: 20px;
+    background-color: rgba(173, 216, 230, 0.95);
+    padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    text-align: center;
-    margin-top:20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group {
-    margin-bottom: 7px;
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin-bottom: -20px;
+    margin-bottom:5.5px;
     font-size: 1.1rem;
     color: darkblue;
-
-    margin-top:20px;
+    font-weight: bold;
 }
 
 input, select {
-    width: 90%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid darkblue;
+    border-radius: 8px;
     font-size: 1rem;
-    margin-top: 5px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
-input[type="checkbox"] {
-    width: auto;
-    margin-right: 10px;
+select[multiple] {
+    height: auto;
+    min-height: 100px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: blue;
+    box-shadow: 0 0 8px rgba(0, 0, 255, 0.3);
 }
 
 .checkbox-group {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
 }
 
 button {
     background-color: darkblue;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1.1rem;
     cursor: pointer;
-    margin-top: 10px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
 }
 
 button:hover {
-    background-color: blue;
-}
-
-.consent {
-    font-size: 0.9rem;
-    color: darkblue;
-    margin-top: 10px;
+    background-color: #00008b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 #wyniki {
-    background-color: rgba(173, 216, 230, 0.9);
-    padding: 20px;
+    background-color: rgba(173, 216, 230, 0.95);
+    padding: 25px;
     border-radius: 15px;
-    margin-top: 20px;
-    width: 400px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 25px 0;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     color: darkblue;
 }
 
 #wyniki h3 {
-    margin-top: 0;
     color: darkblue;
+    margin-top: 0;
+    border-bottom: 2px solid darkblue;
+    padding-bottom: 10px;
+}
+
+#wyniki p {
+    margin: 10px 0;
+    line-height: 1.5;
 }
 
 .reset-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    font-size: 1rem;
+    background-color: #dc3545;
+    margin-top: 20px;
 }
 
 .reset-btn:hover {
-    background-color: #45a049;
+    background-color: #c82333;
 }
