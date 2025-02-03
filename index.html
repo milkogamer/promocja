@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MOJA STRONA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="website icon" type="png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSev1HMs2Qu9-cXd9b9AVpQkd1jDPAbSTdMOKW5avM&s">
+</head>
+<body>
+    <header>
+        <h1>Zamów wycieczkę</h1>
+    </header>
+    <main>
+        <form action="mailto:miloszproc2009@gmail.com" method="post">
+            <div class="form-group">
+                <label for="fname">Imię</label>
+                <input type="text" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+                <label for="lname">Nazwisko</label>
+                <input type="text" id="lname" name="lname" required>
+            </div>
+            <div class="form-group">
+                <label>Płeć</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="sex" value="Mezczyzna"> Mężczyzna</label>
+                    <label><input type="checkbox" name="sex" value="Kobieta"> Kobieta</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Wiek</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="fun">Atrakcje</label>
+                <select name="fun" id="fun" multiple required>
+                    <option value="Hyperion">Hyperion</option>
+                    <option value="Zadra">Zadra</option>
+                    <option value="Mayan">Mayan</option>
+                    <option value="Abyssus">Abyssus</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="food">Jedzenie</label>
+                <select name="food" id="food" multiple required>
+                    <option value="pizza">Pizza</option>
+                    <option value="burger">Burger</option>
+                    <option value="lepiejniejesc">Lepiej nie jeść przed Zadrą</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mail">Mail</label>
+                <input type="email" id="mail" name="mail" required>
+            </div>
+            <button type="submit">Zamów</button>
+            <p class="consent">*Klikając przycisk, zgadzasz się na przetwarzanie swoich danych osobowych</p>
+        </form>
+    </main>
+</body>
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            imie: document.getElementById('fname').value,
+            nazwisko: document.getElementById('lname').value,
+            plec: Array.from(document.querySelectorAll('input[name="sex"]:checked')).map(cb => cb.value),
+            wiek: document.getElementById('age').value,
+            atrakcje: Array.from(document.getElementById('fun').selectedOptions).map(opt => opt.value),
+            jedzenie: Array.from(document.getElementById('food').selectedOptions).map(opt => opt.value),
+            mail: document.getElementById('mail').value
+        };
+    
+        const resultDiv = document.createElement('div');
+        resultDiv.id = 'wyniki';
+        resultDiv.innerHTML = `
+            <h3>Twoje zamówienie:</h3>
+            <p>Imię: ${formData.imie}</p>
+            <p>Nazwisko: ${formData.nazwisko}</p>
+            <p>Płeć: ${formData.plec.join(', ') || 'brak'}</p>
+            <p>Wiek: ${formData.wiek}</p>
+            <p>Atrakcje: ${formData.atrakcje.join(', ')}</p>
+            <p>Jedzenie: ${formData.jedzenie.join(', ')}</p>
+            <p>Email: ${formData.mail}</p>
+        `;
+    
+        // Dodajemy przycisk "Wypełnij jeszcze raz"
+        const resetButton = document.createElement('button');
+        resetButton.textContent = 'Wypełnij jeszcze raz';
+        resetButton.className = 'reset-btn';
+        resetButton.onclick = () => {
+            resultDiv.remove();
+            document.querySelector('form').reset();
+        };
+    
+        resultDiv.appendChild(resetButton);
+    
+        const existingResult = document.getElementById('wyniki');
+        if(existingResult) existingResult.remove();
+        
+        this.parentNode.insertBefore(resultDiv, this.nextSibling);
+        this.reset();
+    });
+    </script>
+</html>
